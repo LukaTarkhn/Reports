@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>SRNSFG - რეპორტები</title>
-
+    <link rel="shortcut icon" href="https://rustaveli.org.ge/themes/images/favicon.png">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
 
