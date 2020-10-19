@@ -214,7 +214,7 @@
                                                 </select>
 
                                                 <label for="budget">პროექტის მთლიანი ბიუჯეტი (ლარში)</label>
-                                                <input type="text" class="form-control @error('budget') is-invalid @enderror"
+                                                <input type="number" class="form-control @error('budget') is-invalid @enderror"
                                                        name="budget" id="budget"
                                                        value="{{ $report->budget }}">
                                                 @error('budget')
@@ -399,7 +399,7 @@
                             </select>
 
                             <label for="budget">პროექტის მთლიანი ბიუჯეტი (ლარში)</label>
-                            <input type="text" class="form-control @error('budget') is-invalid @enderror"
+                            <input type="number" class="form-control @error('budget') is-invalid @enderror"
                                    name="budget" id="budget"
                                    value="{{ old('budget') }}">
                             @error('budget')
