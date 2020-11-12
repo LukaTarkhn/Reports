@@ -28,7 +28,12 @@ class ReportsController extends Controller
             $reports = Report::latest()->where('grantN', 'like', "%$search%")
                 ->orWhere('grantLeder', 'like', "%$search%")
                 ->orWhere('orgName', 'like', "%$search%")
-                ->orWhere('budget', 'like', "%$search%")
+                ->orWhere('coorgName1', 'like', "%$search%")
+                ->orWhere('coorgName2', 'like', "%$search%")
+                ->orWhere('fullbudget', 'like', "%$search%")
+                ->orWhere('leadbudget', 'like', "%$search%")
+                ->orWhere('cobudget1', 'like', "%$search%")
+                ->orWhere('cobudget2', 'like', "%$search%")
                 ->orWhere('income1', 'like', "%$search%")
                 ->orWhere('income2', 'like', "%$search%")
                 ->orWhere('income3', 'like', "%$search%")
@@ -36,19 +41,22 @@ class ReportsController extends Controller
                 ->orWhere('outcome2', 'like', "%$search%")
                 ->orWhere('outcome3', 'like', "%$search%")
                 ->orWhere('jobChangeEflow', 'like', "%$search%")
-                ->orWhere('jobChangeOrderNumber', 'like', "%$search%")
                 ->orWhere('jobTerminationEflow', 'like', "%$search%")
-                ->orWhere('jobTerminationOrderNumber', 'like', "%$search%")
                 ->orWhere('contractSignData', 'like', "%$search%")
                 ->paginate(40);
         }elseif ($reportStatus){
-            $reports = Report::latest()->where('Status', 'like', "%$reportStatus%")->paginate(40);
+            $reports = Report::latest()->where('Status', 'like', "$reportStatus")->paginate(40);
         }elseif ($organizationStatus){
-            $reports = Report::latest()->where('orgStatus', 'like', "%$organizationStatus%")->paginate(40);
+            if ($organizationStatus == 'Lead') {
+                $reports = Report::latest()->where('orgName', '<>', '')->paginate(40);
+            }
+            if ($organizationStatus == 'Participant') {
+                $reports = Report::latest()->where('coorgName1', '<>', '')->orWhere('coorgName2', '<>', '')->paginate(40);
+            }   
         }elseif ($byPeriod){
-            $reports = Report::latest()->where('currPeriod', 'like', "%$byPeriod%")->paginate(40);
+            $reports = Report::latest()->where('currPeriod', 'like', "$byPeriod")->paginate(40);
         }elseif ($byUser){
-            $reports = Report::latest()->where('user_id', 'like', "%$byUser%")->paginate(40);
+            $reports = Report::latest()->where('user_id', 'like', "$byUser")->paginate(40);
         } else {
             $reports = Report::latest()->paginate(40);
         }
@@ -72,8 +80,12 @@ class ReportsController extends Controller
             'contractSignData' => 'max:255',
             'grantLeder' => 'max:255',
             'orgName' => 'max:255',
-            'orgStatus' => 'max:255',
-            'budget' => 'max:255',
+            'coorgName1' => 'max:255',
+            'coorgName2' => 'max:255',
+            'fullbudget' => 'max:255',
+            'leadbudget' => 'max:255',
+            'cobudget1' => 'max:255',
+            'cobudget2' => 'max:255',
             'currPeriod' => 'max:255',
             'income1' => 'max:255',
             'income2' => 'max:255',
@@ -82,9 +94,7 @@ class ReportsController extends Controller
             'outcome2' => 'max:255',
             'outcome3' => 'max:255',
             'jobChangeEflow' => 'max:255',
-            'jobChangeOrderNumber' => 'max:255',
             'jobTerminationEflow' => 'max:255',
-            'jobTerminationOrderNumber' => 'max:255',
         ]);
         Report::create([
             'user_id' => auth()->id(),
@@ -92,8 +102,12 @@ class ReportsController extends Controller
             'contractSignData' => $attributes['contractSignData'],
             'grantLeder' => $attributes['grantLeder'],
             'orgName' => $attributes['orgName'],
-            'orgStatus' => $attributes['orgStatus'],
-            'budget' => $attributes['budget'],
+            'coorgName1' => $attributes['coorgName1'],
+            'coorgName2' => $attributes['coorgName2'],
+            'fullbudget' => $attributes['fullbudget'],
+            'leadbudget' => $attributes['leadbudget'],
+            'cobudget1' => $attributes['cobudget1'],
+            'cobudget2' => $attributes['cobudget2'],
             'currPeriod' => $attributes['currPeriod'],
             'income1' => $attributes['income1'],
             'income2' => $attributes['income2'],
@@ -102,9 +116,7 @@ class ReportsController extends Controller
             'outcome2' => $attributes['outcome2'],
             'outcome3' => $attributes['outcome3'],
             'jobChangeEflow' => $attributes['jobChangeEflow'],
-            'jobChangeOrderNumber' => $attributes['jobChangeOrderNumber'],
             'jobTerminationEflow' => $attributes['jobTerminationEflow'],
-            'jobTerminationOrderNumber' => $attributes['jobTerminationOrderNumber']
         ]);
 
         return redirect('/');
@@ -123,8 +135,12 @@ class ReportsController extends Controller
             'contractSignData' => 'max:255',
             'grantLeder' => 'max:255',
             'orgName' => 'max:255',
-            'orgStatus' => 'max:255',
-            'budget' => 'max:255',
+            'coorgName1' => 'max:255',
+            'coorgName2' => 'max:255',
+            'fullbudget' => 'max:255',
+            'leadbudget' => 'max:255',
+            'cobudget1' => 'max:255',
+            'cobudget2' => 'max:255',
             'currPeriod' => 'max:255',
             'income1' => 'max:255',
             'income2' => 'max:255',
@@ -133,9 +149,7 @@ class ReportsController extends Controller
             'outcome2' => 'max:255',
             'outcome3' => 'max:255',
             'jobChangeEflow' => 'max:255',
-            'jobChangeOrderNumber' => 'max:255',
             'jobTerminationEflow' => 'max:255',
-            'jobTerminationOrderNumber' => 'max:255',
             'Status' => 'max:255',
         ]);
         $report = Report::findOrFail($id);
@@ -145,8 +159,12 @@ class ReportsController extends Controller
                 'contractSignData' => $attributes['contractSignData'],
                 'grantLeder' => $attributes['grantLeder'],
                 'orgName' => $attributes['orgName'],
-                'orgStatus' => $attributes['orgStatus'],
-                'budget' => $attributes['budget'],
+                'coorgName1' => $attributes['coorgName1'],
+                'coorgName2' => $attributes['coorgName2'],
+                'fullbudget' => $attributes['fullbudget'],
+                'leadbudget' => $attributes['leadbudget'],
+                'cobudget1' => $attributes['cobudget1'],
+                'cobudget2' => $attributes['cobudget2'],
                 'currPeriod' => $attributes['currPeriod'],
                 'income1' => $attributes['income1'],
                 'income2' => $attributes['income2'],
@@ -155,9 +173,7 @@ class ReportsController extends Controller
                 'outcome2' => $attributes['outcome2'],
                 'outcome3' => $attributes['outcome3'],
                 'jobChangeEflow' => $attributes['jobChangeEflow'],
-                'jobChangeOrderNumber' => $attributes['jobChangeOrderNumber'],
                 'jobTerminationEflow' => $attributes['jobTerminationEflow'],
-                'jobTerminationOrderNumber' => $attributes['jobTerminationOrderNumber'],
                 'Status' => $attributes['Status']
             ]);
 

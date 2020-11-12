@@ -43,7 +43,6 @@
                                         <option value="">ორგანიზაციის სტატუსით...</option>
                                         <option value="Lead" @if (request()->input('organizationStatus') == 'Lead') selected @endif> წამყვანი</option>
                                         <option value="Participant" @if (request()->input('organizationStatus') == 'Participant') selected @endif>თანამონაწილე</option>
-                                        <option value="Co-fund" @if (request()->input('organizationStatus') == 'Co-fund') selected @endif>თანადამფინანსებელი</option>
                                     </select>
                                 </form>
                             </div>
@@ -54,7 +53,6 @@
                                         <option value="I" @if (request()->input('byPeriod') == 'I') selected @endif> I</option>
                                         <option value="II" @if (request()->input('byPeriod') == 'II') selected @endif>II</option>
                                         <option value="III" @if (request()->input('byPeriod') == 'III') selected @endif>III</option>
-                                        <option value="IIII" @if (request()->input('byPeriod') == 'IIII') selected @endif> IIII</option>
                                         <option value="IV" @if (request()->input('byPeriod') == 'IV') selected @endif> IV</option>
                                         <option value="V" @if (request()->input('byPeriod') == 'V') selected @endif> V</option>
                                         <option value="VI" @if (request()->input('byPeriod') == 'VI') selected @endif> VI</option>
@@ -90,22 +88,24 @@
             <tr>
                 <th scope="col">Control</th>
                 <th scope="col">საგრანტო ხელშეკრულების ნომერი</th>
-                <th scope="col">ხელშეკრულების გაფორმების თარიღი</th>
+                <th scope="col">საგრანტო ხელშეკრულების გაფორმების თარიღი</th>
                 <th scope="col">პროექტის ხელმძღვანელი (სახელი/გვარი)</th>
-                <th scope="col">ორგანიზაციის დასახელება</th>
-                <th scope="col">ორგანიზაციის სტატუსი (წამყვანი/თანამონაწილე)</th>
-                <th scope="col">პროექტის მთლიანი ბიუჯეტი</th>
+                <th scope="col">წამყვანი ორგანიზაციის დასახელება</th>
+                <th scope="col">თანამონაწილე ორგანიზაცია 1 -ის დასახელება</th>
+                <th scope="col">თანამონაწილე ორგანიზაცია 2 -ის დასახელება</th>
+                <th scope="col">პროექტის მთლიანი ბიუჯეტი (ფონდიდან მოთხოვნილი)</th>
+                <th scope="col">წამყვანი ორგანიზაციის ბიუჯეტი (ფონდიდან მოთხოვნილი)</th>
+                <th scope="col">თანამონაწილე ორგანიზაცია 1-ის ბიუჯეტი (ფონდიდან მოთხოვნილი)</th>
+                <th scope="col">თანამონაწილე ორგანიზაცია 2-ის ბიუჯეტი (ფონდიდან მოთხოვნილი)</th>
                 <th scope="col">მიმდინარე პერიოდი</th>
-                <th scope="col"><span style="color: #2fa360">(შემოსული)</span> ანგარიშის ეფლოუს ნომერი</th>
-                <th scope="col"><span style="color: #2fa360">(შემოსული)</span> ცვლილების კორესპონდეცია</th>
-                <th scope="col"><span style="color: #2fa360">(შემოსული)</span> ხარვეზის ვადა</th>
-                <th scope="col"><span style="color: #ffa949">(გასული)</span> წერილი ანგარიშის ხარვეზთან დაკავშირებით</th>
-                <th scope="col"><span style="color: #ffa949">(გასული)</span> წერილი ცვლილების კორესპონდეციასთნ დაკავშირებით</th>
-                <th scope="col"><span style="color: #ffa949">(გასული)</span> ხარვეზის ვადაზე პასუხი</th>
-                <th scope="col">სამსახურებრივი ცვლილებასთან დაკავშირებით (Eflow-ს ნომერი) </th>
-                <th scope="col">სამსახურებრივი ცვლილებასთან დაკავშირებით (ბრძანების ნომერი) </th>
-                <th scope="col">სამსახურებრივი შეწყვეტასთან დაკავშირებით (Eflow-ს ნომერი)</th>
-                <th scope="col">სამსახურებრივი შეწყვეტასთან დაკავშირებით (ბრძანების ნომერი)</th>
+                <th scope="col"><span style="color: #2fa360">(შემოსული)</span> ანგარიშის (Eflow-ს ნომერი)</th>
+                <th scope="col"><span style="color: #2fa360">(შემოსული)</span> ცვლილების კორესპოდენცია (Eflow-ს ნომერი)</th>
+                <th scope="col"><span style="color: #2fa360">(შემოსული)</span> ხარვეზის გამოსწორების ვადის მოთხოვნა (Eflow-ს ნომერი)</th>
+                <th scope="col"><span style="color: #ffa949">(გასული)</span> წერილი ანგარიშის ხარვეზთან დაკავშირებით (Eflow-ს ნომერი)</th>
+                <th scope="col"><span style="color: #ffa949">(გასული)</span> წერილი ცვლილების კორესპოდენციასთან დაკავშირებით (Eflow-ს ნომერი)</th>
+                <th scope="col"><span style="color: #ffa949">(გასული)</span> ხარვეზის ვადაზე პასუხი (Eflow-ს ნომერი)</th>
+                <th scope="col">სამსახურებრივი ბარათი ცვლილებასთან და პროექტის შეწყვეტასთან დაკავშირებით (Eflow-ს ნომერი) </th>
+                <th scope="col">ბრძანება პროექტის შეწყვეტის თაობაზე</th>
                 <th scope="col">სტატუსი <span style="color: #ffa949">(მიმდინარე/</span><span style="color: #2fa360">დასრულებული)</span></th>
                 <th scope="col">ავტორი</th>
             </tr>
@@ -132,8 +132,12 @@
                     <td>{{$report->contractSignData}}</td>
                     <td>{{$report->grantLeder}}</td>
                     <td>{{$report->orgName}}</td>
-                    <td>@if($report->orgStatus == 'Lead')წამყვანი @elseif($report->orgStatus == 'Participant') თანამონაწილე @else თანადამფინანსებელი @endif</td>
-                    <td>{{$report->budget}} @if($report->budget)ლარი@endif</td>
+                    <td>{{$report->coorgName1}}</td>
+                    <td>{{$report->coorgName2}}</td>
+                    <td>{{$report->fullbudget}} @if($report->fullbudget)ლარი@endif</td>
+                    <td>{{$report->leadbudget}} @if($report->leadbudget)ლარი@endif</td>
+                    <td>{{$report->cobudget1}} @if($report->cobudget1)ლარი@endif</td>
+                    <td>{{$report->cobudget2}} @if($report->cobudget2)ლარი@endif</td>
                     <td>{{$report->currPeriod}} @if($report->currPeriod)პერიოდი@endif</td>
                     <td>{{$report->income1}}</td>
                     <td>{{$report->income2}}</td>
@@ -142,195 +146,208 @@
                     <td>{{$report->outcome2}}</td>
                     <td>{{$report->outcome3}}</td>
                     <td>{{$report->jobChangeEflow}}</td>
-                    <td>{{$report->jobChangeOrderNumber}}</td>
                     <td>{{$report->jobTerminationEflow}}</td>
-                    <td>{{$report->jobTerminationOrderNumber}}</td>
                     <td>@if($report->Status == 'Current')მიმდინარე @else დასრულებული @endif</td>
                     <td>{{$report->user->name}}</td>
                 </tr>
 
                 <!-- Edit Modal -->
                 <div class="modal fade bd-example-modal-lg" id="editReport{{ $report->id }}" tabindex="-1" role="dialog" aria-labelledby="editReport{{ $report->id }}Label" aria-hidden="true">
-                    <div class="modal-dialog modal-xl" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="editReport{{ $report->id }}Label" style="font-weight: bold">რეპორტის რედაქტირება</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body" style="background: #e7ebeb">
-                                <form id="editForm{{ $report->id }}" method="POST" action="/reports/{{ $report->id }}">
-                                    @csrf
-                                    @method('PUT')
-                                    <div class="editform">
-                                        <div style="width: 50%; margin-right: 25px; margin-left: 35px">
-                                            <label for="Status">რეპორტის სტატუსი </label>
-                                            <select class="form-control" id="Status" name="Status">
-                                                <option value="Current" @if ($report->Status == 'Current') selected @endif> მიმდინარე</option>
-                                                <option value="Finished" @if ($report->Status == 'Finished') selected @endif> დასრულებული</option>
-                                            </select>
+                        <div class="modal-dialog modal-xl" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editReport{{ $report->id }}Label" style="font-weight: bold">რეპორტის რედაქტირება</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" style="background: #e7ebeb">
+                                    <form id="editForm{{ $report->id }}" method="POST" action="/reports/{{ $report->id }}">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="editform">
+                                            <div style="width: 50%; margin-right: 25px; margin-left: 35px">
+                                                <label for="Status">რეპორტის სტატუსი </label>   
+                                                <select class="form-control" id="Status" name="Status">
+                                                    <option value="Current" @if ($report->Status == 'Current') selected @endif> მიმდინარე</option>
+                                                    <option value="Finished" @if ($report->Status == 'Finished') selected @endif> დასრულებული</option>
+                                                </select>
+                                                
+                                                <label for="grantN">საგრანტო ხელშეკრულების ნომერი </label>
+                                                <input type="text" class="form-control @error('grantN') is-invalid @enderror"
+                                                    name="grantN"
+                                                    id="grantN"
+                                                    aria-describedby="grantNHelp"
+                                                    value="{{ $report->grantN }}">
+                                                @error('grantN')
+                                                <div class="invalid-feedback">{{ $errors->first('grantN') }}</div>
+                                                @enderror
 
-                                            <label for="grantN">საგრანტო ხელშეკრულების ნომერი </label>
-                                            <input type="text" class="form-control @error('grantN') is-invalid @enderror"
-                                                   name="grantN"
-                                                   id="grantN"
-                                                   aria-describedby="grantNHelp"
-                                                   value="{{ $report->grantN }}">
-                                            @error('grantN')
-                                            <div class="invalid-feedback">{{ $errors->first('grantN') }}</div>
-                                            @enderror
+                                                <label for="contractSignData">საგრანტო ხელშეკრულების გაფორმების თარიღი </label>
+                                                <input type="text" class="addDate form-control @error('contractSignData') is-invalid @enderror"
+                                                    name="contractSignData"
+                                                    id="contractSignData"
+                                                    value="{{ $report->contractSignData }}">
+                                                @error('contractSignData')
+                                                <div class="invalid-feedback">{{ $errors->first('contractSignData') }}</div>
+                                                @enderror
 
-                                            <label for="contractSignData">ხელშეკრულების გაფორმების თარიღი  </label>
-                                            <input type="text" class="editDate form-control @error('contractSignData') is-invalid @enderror"
-                                                   name="contractSignData"
-                                                   id="contractSignData"
-                                                   value="{{ $report->contractSignData }}">
-                                            @error('contractSignData')
-                                            <div class="invalid-feedback">{{ $errors->first('contractSignData') }}</div>
-                                            @enderror
+                                                <label for="grantLeder">პროექტის ხელმძღვანელი (სახელი/გვარი) </label>
+                                                <input type="text" class="form-control @error('grantLeder') is-invalid @enderror"
+                                                    name="grantLeder" id="grantLeder"
+                                                    value="{{ $report->grantLeder }}">
+                                                @error('grantLeder')
+                                                <div class="invalid-feedback">{{ $errors->first('grantLeder') }}</div>
+                                                @enderror
 
-                                            <label for="grantLeder">პროექტის ხელმძღვანელი (სახელი/გვარი) </label>
-                                            <input type="text" class="form-control @error('grantLeder') is-invalid @enderror"
-                                                   name="grantLeder" id="grantLeder"
-                                                   value="{{ $report->grantLeder }}">
-                                            @error('grantLeder')
-                                            <div class="invalid-feedback">{{ $errors->first('grantLeder') }}</div>
-                                            @enderror
+                                                <label for="orgName">წამყვანი ორგანიზაციის დასახელება </label>
+                                                <input type="text" class="form-control @error('orgName') is-invalid @enderror"
+                                                    name="orgName" id="orgName"
+                                                    value="{{ $report->orgName }}">
+                                                @error('orgName')
+                                                <div class="invalid-feedback">{{ $errors->first('orgName') }}</div>
+                                                @enderror
 
-                                            <label for="orgName">ორგანიზაციის დასახელება </label>
-                                            <input type="text" class="form-control @error('orgName') is-invalid @enderror"
-                                                   name="orgName" id="orgName"
-                                                   value="{{ $report->orgName }}">
-                                            @error('orgName')
-                                            <div class="invalid-feedback">{{ $errors->first('orgName') }}</div>
-                                            @enderror
+                                                <label for="coorgName1">თანამონაწილე ორგანიზაცია 1 -ის დასახელება </label>
+                                                <input type="text" class="form-control @error('coorgName1') is-invalid @enderror"
+                                                    name="coorgName1" id="coorgName1"
+                                                    value="{{ $report->coorgName1 }}">
+                                                @error('coorgName1')
+                                                <div class="invalid-feedback">{{ $errors->first('coorgName1') }}</div>
+                                                @enderror
 
-                                            <label for="orgStatus">ორგანიზაციის სტატუსი </label>
-                                            <select class="form-control" id="orgStatus" name="orgStatus">
-                                                <option value="Lead" @if ($report->orgStatus == 'Lead') selected @endif> წამყვანი</option>
-                                                <option value="Participant" @if ($report->orgStatus == 'Participant') selected @endif>თანამონაწილე</option>
-                                                <option value="Co-fund" @if ($report->orgStatus == 'Co-fund') selected @endif>თანადამფინანსებელი</option>
-                                            </select>
+                                                <label for="coorgName2">თანამონაწილე ორგანიზაცია 2 -ის დასახელება </label>
+                                                <input type="text" class="form-control @error('coorgName2') is-invalid @enderror"
+                                                    name="coorgName2" id="coorgName2"
+                                                    value="{{ $report->coorgName2 }}">
+                                                @error('coorgName2')
+                                                <div class="invalid-feedback">{{ $errors->first('coorgName2') }}</div>
+                                                @enderror
 
-                                            <label for="budget">პროექტის მთლიანი ბიუჯეტი (ლარში)</label>
-                                            <input type="number" class="form-control @error('budget') is-invalid @enderror"
-                                                   name="budget" id="budget"
-                                                   value="{{ $report->budget }}">
-                                            @error('budget')
-                                            <div class="invalid-feedback">{{ $errors->first('budget') }}</div>
-                                            @enderror
+                                                <label for="fullbudget">პროექტის მთლიანი ბიუჯეტი (ფონდიდან მოთხოვნილი)</label>
+                                                <input type="number" class="form-control @error('fullbudget') is-invalid @enderror"
+                                                    name="fullbudget" id="fullbudget"
+                                                    value="{{ $report->fullbudget }}">
+                                                @error('fullbudget')
+                                                <div class="invalid-feedback">{{ $errors->first('fullbudget') }}</div>
+                                                @enderror
 
-                                            <label for="currPeriod">მიმდინარე პერიოდი </label>
-                                            <select class="form-control" id="currPeriod" name="currPeriod">
-                                                <option value="I" @if ($report->orgStatus == 'I') selected @endif> I</option>
-                                                <option value="II" @if ($report->orgStatus == 'II') selected @endif>II</option>
-                                                <option value="III" @if ($report->orgStatus == 'III') selected @endif>III</option>
-                                                <option value="IIII" @if ($report->orgStatus == 'IIII') selected @endif> IIII</option>
-                                                <option value="IV" @if ($report->orgStatus == 'IV') selected @endif> IV</option>
-                                                <option value="V" @if ($report->orgStatus == 'V') selected @endif> V</option>
-                                                <option value="VI" @if ($report->orgStatus == 'VI') selected @endif> VI</option>
-                                                <option value="VII" @if ($report->orgStatus == 'VII') selected @endif> VII</option>
-                                                <option value="VIII" @if ($report->orgStatus == 'VIII') selected @endif> VIII</option>
-                                                <option value="IX" @if ($report->orgStatus == 'IX') selected @endif> IX</option>
-                                                <option value="X" @if ($report->orgStatus == 'X') selected @endif> X</option>
-                                                <option value="XI" @if ($report->orgStatus == 'XI') selected @endif> XI</option>
-                                                <option value="XII" @if ($report->orgStatus == 'XII') selected @endif> XII</option>
-                                            </select>
+                                                <label for="leadbudget">წამყვანი ორგანიზაციის ბიუჯეტი (ფონდიდან მოთხოვნილი)</label>
+                                                <input type="number" class="form-control @error('leadbudget') is-invalid @enderror"
+                                                    name="leadbudget" id="leadbudget"
+                                                    value="{{ $report->leadbudget }}">
+                                                @error('leadbudget')
+                                                <div class="invalid-feedback">{{ $errors->first('leadbudget') }}</div>
+                                                @enderror
 
-                                            <label for="income1"><span style="color: #2fa360">(შემოსული)</span> ანგარიშის Eflow-ს ნომერი  </label>
-                                            <input type="text" class="form-control @error('income1') is-invalid @enderror"
-                                                   name="income1" id="income1"
-                                                   value="{{ $report->income1 }}">
-                                            @error('income1')
-                                            <div class="invalid-feedback">{{ $errors->first('income1') }}</div>
-                                            @enderror
+                                                <label for="cobudget1">თანამონაწილე ორგანიზაცია 1-ის ბიუჯეტი (ფონდიდან მოთხოვნილი)</label>
+                                                <input type="number" class="form-control @error('cobudget1') is-invalid @enderror"
+                                                    name="cobudget1" id="cobudget1"
+                                                    value="{{ $report->cobudget1 }}">
+                                                @error('cobudget1')
+                                                <div class="invalid-feedback">{{ $errors->first('cobudget1') }}</div>
+                                                @enderror
 
+                                                <label for="cobudget2">თანამონაწილე ორგანიზაცია 2-ის ბიუჯეტი (ფონდიდან მოთხოვნილი)</label>
+                                                <input type="number" class="form-control @error('cobudget2') is-invalid @enderror"
+                                                    name="cobudget2" id="cobudget2"
+                                                    value="{{ $report->cobudget2 }}">
+                                                @error('cobudget2')
+                                                <div class="invalid-feedback">{{ $errors->first('cobudget2') }}</div>
+                                                @enderror
+                                            </div>
+                                            <div style="width: 50%">
+                                                <label for="currPeriod">მიმდინარე პერიოდი </label>
+                                                <select class="form-control" id="currPeriod" name="currPeriod">
+                                                    <option value="I" @if ($report->currPeriod == 'I') selected @endif> I</option>
+                                                    <option value="II" @if ($report->currPeriod == 'II') selected @endif>II</option>
+                                                    <option value="III" @if ($report->currPeriod == 'III') selected @endif>III</option>
+                                                    <option value="IV" @if ($report->currPeriod == 'IV') selected @endif> IV</option>
+                                                    <option value="V" @if ($report->currPeriod == 'V') selected @endif> V</option>
+                                                    <option value="VI" @if ($report->currPeriod == 'VI') selected @endif> VI</option>
+                                                    <option value="VII" @if ($report->currPeriod == 'VII') selected @endif> VII</option>
+                                                    <option value="VIII" @if ($report->currPeriod == 'VIII') selected @endif> VIII</option>
+                                                    <option value="IX" @if ($report->currPeriod == 'IX') selected @endif> IX</option>
+                                                    <option value="X" @if ($report->currPeriod == 'X') selected @endif> X</option>
+                                                    <option value="XI" @if ($report->currPeriod == 'XI') selected @endif> XI</option>
+                                                    <option value="XII" @if ($report->currPeriod == 'XII') selected @endif> XII</option>
+                                                </select>
+
+                                                <label for="income1"><span style="color: #2fa360">(შემოსული)</span> ანგარიშის (Eflow-ს ნომერი) </label>
+                                                <input type="text" class="form-control @error('income1') is-invalid @enderror"
+                                                    name="income1" id="income1"
+                                                    value="{{ $report->income1 }}">
+                                                @error('income1')
+                                                <div class="invalid-feedback">{{ $errors->first('income1') }}</div>
+                                                @enderror
+
+                                                <label for="income2"><span style="color: #2fa360">(შემოსული)</span> ცვლილების კორესპოდენცია (Eflow-ს ნომერი) </label>
+                                                <input type="text" class="form-control @error('income2') is-invalid @enderror"
+                                                    name="income2" id="income2"
+                                                    value="{{ $report->income2 }}">
+                                                @error('income2')
+                                                <div class="invalid-feedback">{{ $errors->first('income2') }}</div>
+                                                @enderror
+
+                                                <label for="income3"><span style="color: #2fa360">(შემოსული)</span> ხარვეზის გამოსწორების ვადის მოთხოვნა (Eflow-ს ნომერი)  </label>
+                                                <input type="text" class="form-control @error('income3') is-invalid @enderror"
+                                                    name="income3" id="income3"
+                                                    value="{{ $report->income3 }}">
+                                                @error('income3')
+                                                <div class="invalid-feedback">{{ $errors->first('income3') }}</div>
+                                                @enderror
+
+                                                <label for="outcome1"><span style="color: #ffa949">(გასული)</span> წერილი ანგარიშის ხარვეზთან დაკავშირებით (Eflow-ს ნომერი) </label>
+                                                <input type="text" class="form-control @error('outcome1') is-invalid @enderror"
+                                                    name="outcome1" id="outcome1"
+                                                    value="{{ $report->outcome1 }}">
+                                                @error('outcome1')
+                                                <div class="invalid-feedback">{{ $errors->first('outcome1') }}</div>
+                                                @enderror
+
+                                                <label for="outcome2"><span style="color: #ffa949">(გასული)</span> წერილი ცვლილების კორესპოდენციასთან დაკავშირებით (Eflow-ს ნომერი) </label>
+                                                <input type="text" class="form-control @error('outcome2') is-invalid @enderror"
+                                                    name="outcome2" id="outcome2"
+                                                    value="{{ $report->outcome2 }}">
+                                                @error('outcome2')
+                                                <div class="invalid-feedback">{{ $errors->first('outcome2') }}</div>
+                                                @enderror
+
+                                                <label for="outcome3"><span style="color: #ffa949">(გასული)</span> ხარვეზის ვადაზე პასუხი (Eflow-ს ნომერი)  </label>
+                                                <input type="text" class="form-control @error('outcome3') is-invalid @enderror"
+                                                    name="outcome3" id="outcome3"
+                                                    value="{{ $report->outcome3 }}">
+                                                @error('outcome3')
+                                                <div class="invalid-feedback">{{ $errors->first('outcome3') }}</div>
+                                                @enderror
+
+                                                <label for="jobChangeEflow">სამსახურებრივი ბარათი ცვლილებასთან და პროექტის შეწყვეტასთან დაკავშირებით (Eflow-ს ნომერი) </label>
+                                                <input type="text" class="form-control @error('jobChangeEflow') is-invalid @enderror"
+                                                    name="jobChangeEflow" id="jobChangeEflow"
+                                                    aria-describedby="jobChangeEflowHelp"
+                                                    value="{{ $report->jobChangeEflow }}">
+                                                @error('jobChangeEflow')
+                                                <div class="invalid-feedback">{{ $errors->first('jobChangeEflow') }}</div>
+                                                @enderror
+
+                                                <label for="jobTerminationEflow">ბრძანება პროექტის შეწყვეტის თაობაზე </label>
+                                                <input type="text" class="form-control @error('jobTerminationEflow') is-invalid @enderror"
+                                                    name="jobTerminationEflow" id="jobTerminationEflow"
+                                                    value="{{ $report->jobTerminationEflow }}">
+                                                @error('jobTerminationEflow')
+                                                <div class="invalid-feedback">{{ $errors->first('jobTerminationEflow') }}</div>
+                                                @enderror
+                                            </div>
                                         </div>
-                                        <div style="width: 50%">
-                                        <label for="income2"><span style="color: #2fa360">(შემოსული)</span> ცვლილების კორესპონდეცია </label>
-                                        <input type="text" class="form-control @error('income2') is-invalid @enderror"
-                                               name="income2" id="income2"
-                                               value="{{ $report->income2 }}">
-                                        @error('income2')
-                                        <div class="invalid-feedback">{{ $errors->first('income2') }}</div>
-                                        @enderror
-
-                                        <label for="income3"><span style="color: #2fa360">(შემოსული)</span> ხარვეზის ვადა  </label>
-                                        <input type="text" class="form-control @error('income3') is-invalid @enderror"
-                                               name="income3" id="income3"
-                                               value="{{ $report->income3 }}">
-                                        @error('income3')
-                                        <div class="invalid-feedback">{{ $errors->first('income3') }}</div>
-                                        @enderror
-
-                                        <label for="outcome1"><span style="color: #ffa949">(გასული)</span> წერილი ანგარიშის ხარვეზთან დაკავშირებით </label>
-                                        <input type="text" class="form-control @error('outcome1') is-invalid @enderror"
-                                               name="outcome1" id="outcome1"
-                                               value="{{ $report->outcome1 }}">
-                                        @error('outcome1')
-                                        <div class="invalid-feedback">{{ $errors->first('outcome1') }}</div>
-                                        @enderror
-
-                                        <label for="outcome2"><span style="color: #ffa949">(გასული)</span> წერილი ცვლილების კორესპონდეციასთნ დაკავშირებით </label>
-                                        <input type="text" class="form-control @error('outcome2') is-invalid @enderror"
-                                               name="outcome2" id="outcome2"
-                                               value="{{ $report->outcome2 }}">
-                                        @error('outcome2')
-                                        <div class="invalid-feedback">{{ $errors->first('outcome2') }}</div>
-                                        @enderror
-
-                                        <label for="outcome3"><span style="color: #ffa949">(გასული)</span> ხარვეზის ვადაზე პასუხი  </label>
-                                        <input type="text" class="form-control @error('outcome3') is-invalid @enderror"
-                                               name="outcome3" id="outcome3"
-                                               value="{{ $report->outcome3 }}">
-                                        @error('outcome3')
-                                        <div class="invalid-feedback">{{ $errors->first('outcome3') }}</div>
-                                        @enderror
-
-                                        <label for="jobChangeEflow">სამსახურებრივი ცვლილებასთან დაკავშირებით (Eflow-ს ნომერი) </label>
-                                        <input type="text" class="form-control @error('jobChangeEflow') is-invalid @enderror"
-                                               name="jobChangeEflow" id="jobChangeEflow"
-                                               aria-describedby="jobChangeEflowHelp"
-                                               value="{{ $report->jobChangeEflow }}">
-                                        @error('jobChangeEflow')
-                                        <div class="invalid-feedback">{{ $errors->first('jobChangeEflow') }}</div>
-                                        @enderror
-
-                                        <label for="jobChangeOrderNumber">სამსახურებრივი ცვლილებასთან დაკავშირებით (ბრძანების ნომერი) </label>
-                                        <input type="text" class="form-control @error('jobChangeOrderNumber') is-invalid @enderror"
-                                               name="jobChangeOrderNumber" id="jobChangeOrderNumber"
-                                               value="{{ $report->jobChangeOrderNumber }}">
-                                        @error('jobChangeOrderNumber')
-                                        <div class="invalid-feedback">{{ $errors->first('jobChangeOrderNumber') }}</div>
-                                        @enderror
-
-                                        <label for="jobTerminationEflow">სამსახურებრივი შეწყვეტასთან დაკავშირებით (Eflow-ს ნომერი) </label>
-                                        <input type="text" class="form-control @error('jobTerminationEflow') is-invalid @enderror"
-                                               name="jobTerminationEflow" id="jobTerminationEflow"
-                                               value="{{ $report->jobTerminationEflow }}">
-                                        @error('jobTerminationEflow')
-                                        <div class="invalid-feedback">{{ $errors->first('jobTerminationEflow') }}</div>
-                                        @enderror
-
-                                        <label for="jobTerminationOrderNumber">სამსახურებრივი შეწყვეტასთან დაკავშირებით (ბრძანების ნომერი)</label>
-                                        <input type="text" class="form-control @error('jobTerminationOrderNumber') is-invalid @enderror"
-                                               name="jobTerminationOrderNumber" id="jobTerminationOrderNumber"
-                                               value="{{ $report->jobTerminationOrderNumber }}">
-                                        @error('jobTerminationOrderNumber')
-                                        <div class="invalid-feedback">{{ $errors->first('jobTerminationOrderNumber') }}</div>
-                                        @enderror
-                                    </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">დახურვა</button>
-                                <button type="submit" class="btn btn-primary" form="editForm{{ $report->id }}">რედაქტირება</button>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">დახურვა</button>
+                                    <button type="submit" class="btn btn-primary" form="editForm{{ $report->id }}">რედაქტირება</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
             @endforeach
             </tbody>
         </table>
@@ -344,178 +361,193 @@
 
 <!--Add Modal -->
 <div class="modal fade bd-example-modal-lg" id="addReport" tabindex="-1" role="dialog" aria-labelledby="addReportLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addReportLabel" style="font-weight: bold">რეპორტის დამატება</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" style="background: #e7ebeb">
-                <form id="addform" method="POST" action="/reports" >
-                    @csrf
-                    <div style="width: 50%; margin-right: 25px; margin-left: 35px">
-                        <label for="grantN">საგრანტო ხელშეკრულების ნომერი </label>
-                        <input  type="text" class="form-control @error('grantN') is-invalid @enderror"
-                               name="grantN"
-                               id="grantN"
-                               aria-describedby="grantNHelp"
-                               value="{{ old('grantN') }}">
-                        @error('grantN')
-                        <div class="invalid-feedback">{{ $errors->first('grantN') }}</div>
-                        @enderror
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addReportLabel" style="font-weight: bold">რეპორტის დამატება</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="background: #e7ebeb">
+                    <form id="addform" method="POST" action="/reports" >
+                        @csrf
+                        <div style="width: 50%; margin-right: 25px; margin-left: 35px">
+                            <label for="grantN">საგრანტო ხელშეკრულების ნომერი </label>
+                            <input type="text" class="form-control @error('grantN') is-invalid @enderror"
+                                   name="grantN"
+                                   id="grantN"
+                                   aria-describedby="grantNHelp"
+                                   value="{{ old('grantN') }}">
+                            @error('grantN')
+                            <div class="invalid-feedback">{{ $errors->first('grantN') }}</div>
+                            @enderror
 
-                        <label for="contractSignData">ხელშეკრულების გაფორმების თარიღი  </label>
-                        <input type="text" class="addDate form-control @error('contractSignData') is-invalid @enderror"
-                               name="contractSignData"
-                               id="contractSignData"
-                               value="{{ old('contractSignData') }}">
-                        @error('contractSignData')
-                        <div class="invalid-feedback">{{ $errors->first('contractSignData') }}</div>
-                        @enderror
+                            <label for="contractSignData">საგრანტო ხელშეკრულების გაფორმების თარიღი </label>
+                            <input type="text" class="addDate form-control @error('contractSignData') is-invalid @enderror"
+                                   name="contractSignData"
+                                   id="contractSignData"
+                                   value="{{ old('contractSignData') }}">
+                            @error('contractSignData')
+                            <div class="invalid-feedback">{{ $errors->first('contractSignData') }}</div>
+                            @enderror
 
-                        <label for="grantLeder">პროექტის ხელმძღვანელი (სახელი/გვარი) </label>
-                        <input type="text" class="form-control @error('grantLeder') is-invalid @enderror"
-                               name="grantLeder" id="grantLeder"
-                               value="{{ old('grantLeder') }}">
-                        @error('grantLeder')
-                        <div class="invalid-feedback">{{ $errors->first('grantLeder') }}</div>
-                        @enderror
+                            <label for="grantLeder">პროექტის ხელმძღვანელი (სახელი/გვარი) </label>
+                            <input type="text" class="form-control @error('grantLeder') is-invalid @enderror"
+                                   name="grantLeder" id="grantLeder"
+                                   value="{{ old('grantLeder') }}">
+                            @error('grantLeder')
+                            <div class="invalid-feedback">{{ $errors->first('grantLeder') }}</div>
+                            @enderror
 
-                        <label for="orgName">ორგანიზაციის დასახელება </label>
-                        <input type="text" class="form-control @error('orgName') is-invalid @enderror"
-                               name="orgName" id="orgName"
-                               value="{{ old('orgName') }}">
-                        @error('orgName')
-                        <div class="invalid-feedback">{{ $errors->first('orgName') }}</div>
-                        @enderror
+                            <label for="orgName">წამყვანი ორგანიზაციის დასახელება </label>
+                            <input type="text" class="form-control @error('orgName') is-invalid @enderror"
+                                   name="orgName" id="orgName"
+                                   value="{{ old('orgName') }}">
+                            @error('orgName')
+                            <div class="invalid-feedback">{{ $errors->first('orgName') }}</div>
+                            @enderror
 
-                        <label for="orgStatus">ორგანიზაციის სტატუსი </label>
-                        <select class="form-control" id="orgStatus" name="orgStatus">
-                            <option value="Lead" @if (old('orgStatus') == 'Lead') selected @endif> წამყვანი</option>
-                            <option value="Participant" @if (old('orgStatus') == 'Participant') selected @endif>თანამონაწილე</option>
-                            <option value="Co-fund" @if (old('orgStatus') == 'Co-fund') selected @endif>თანადამფინანსებელი</option>
-                        </select>
+                            <label for="coorgName1">თანამონაწილე ორგანიზაცია 1 -ის დასახელება </label>
+                            <input type="text" class="form-control @error('coorgName1') is-invalid @enderror"
+                                   name="coorgName1" id="coorgName1"
+                                   value="{{ old('coorgName1') }}">
+                            @error('coorgName1')
+                            <div class="invalid-feedback">{{ $errors->first('coorgName1') }}</div>
+                            @enderror
 
-                        <label for="budget">პროექტის მთლიანი ბიუჯეტი (ლარში)</label>
-                        <input type="number" class="form-control @error('budget') is-invalid @enderror"
-                               name="budget" id="budget"
-                               value="{{ old('budget') }}">
-                        @error('budget')
-                        <div class="invalid-feedback">{{ $errors->first('budget') }}</div>
-                        @enderror
+                            <label for="coorgName2">თანამონაწილე ორგანიზაცია 2 -ის დასახელება </label>
+                            <input type="text" class="form-control @error('coorgName2') is-invalid @enderror"
+                                   name="coorgName2" id="coorgName2"
+                                   value="{{ old('coorgName2') }}">
+                            @error('coorgName2')
+                            <div class="invalid-feedback">{{ $errors->first('coorgName2') }}</div>
+                            @enderror
 
-                        <label for="currPeriod">მიმდინარე პერიოდი </label>
-                        <select class="form-control" id="currPeriod" name="currPeriod">
-                            <option value="I" @if (old('orgStatus') == 'I') selected @endif> I</option>
-                            <option value="II" @if (old('orgStatus') == 'II') selected @endif>II</option>
-                            <option value="III" @if (old('orgStatus') == 'III') selected @endif>III</option>
-                            <option value="IIII" @if (old('orgStatus') == 'IIII') selected @endif> IIII</option>
-                            <option value="IV" @if (old('orgStatus') == 'IV') selected @endif> IV</option>
-                            <option value="V" @if (old('orgStatus') == 'V') selected @endif> V</option>
-                            <option value="VI" @if (old('orgStatus') == 'VI') selected @endif> VI</option>
-                            <option value="VII" @if (old('orgStatus') == 'VII') selected @endif> VII</option>
-                            <option value="VIII" @if (old('orgStatus') == 'VIII') selected @endif> VIII</option>
-                            <option value="IX" @if (old('orgStatus') == 'IX') selected @endif> IX</option>
-                            <option value="X" @if (old('orgStatus') == 'X') selected @endif> X</option>
-                            <option value="XI" @if (old('orgStatus') == 'XI') selected @endif> XI</option>
-                            <option value="XII" @if (old('orgStatus') == 'XII') selected @endif> XII</option>
-                        </select>
+                            <label for="fullbudget">პროექტის მთლიანი ბიუჯეტი (ფონდიდან მოთხოვნილი)</label>
+                            <input type="number" class="form-control @error('fullbudget') is-invalid @enderror"
+                                   name="fullbudget" id="fullbudget"
+                                   value="{{ old('fullbudget') }}">
+                            @error('fullbudget')
+                            <div class="invalid-feedback">{{ $errors->first('fullbudget') }}</div>
+                            @enderror
 
-                        <label for="income1"><span style="color: #2fa360">(შემოსული)</span> ანგარიშის Eflow-ს ნომერი  </label>
-                        <input type="text" class="form-control @error('income1') is-invalid @enderror"
-                               name="income1" id="income1"
-                               value="{{ old('income1') }}">
-                        @error('income1')
-                        <div class="invalid-feedback">{{ $errors->first('income1') }}</div>
-                        @enderror
+                            <label for="leadbudget">წამყვანი ორგანიზაციის ბიუჯეტი (ფონდიდან მოთხოვნილი)</label>
+                            <input type="number" class="form-control @error('leadbudget') is-invalid @enderror"
+                                   name="leadbudget" id="leadbudget"
+                                   value="{{ old('leadbudget') }}">
+                            @error('leadbudget')
+                            <div class="invalid-feedback">{{ $errors->first('leadbudget') }}</div>
+                            @enderror
 
-                        <label for="income2"><span style="color: #2fa360">(შემოსული)</span> ცვლილების კორესპონდეცია </label>
-                        <input type="text" class="form-control @error('income2') is-invalid @enderror"
-                               name="income2" id="income2"
-                               value="{{ old('income2') }}">
-                        @error('income2')
-                        <div class="invalid-feedback">{{ $errors->first('income2') }}</div>
-                        @enderror
-                    </div>
+                            <label for="cobudget1">თანამონაწილე ორგანიზაცია 1-ის ბიუჯეტი (ფონდიდან მოთხოვნილი)</label>
+                            <input type="number" class="form-control @error('cobudget1') is-invalid @enderror"
+                                   name="cobudget1" id="cobudget1"
+                                   value="{{ old('cobudget1') }}">
+                            @error('cobudget1')
+                            <div class="invalid-feedback">{{ $errors->first('cobudget1') }}</div>
+                            @enderror
 
-                    <div style="width: 50%">
-                        <label for="income3"><span style="color: #2fa360">(შემოსული)</span> ხარვეზის ვადა  </label>
-                        <input type="text" class="form-control @error('income3') is-invalid @enderror"
-                               name="income3" id="income3"
-                               value="{{ old('income3') }}">
-                        @error('income3')
-                        <div class="invalid-feedback">{{ $errors->first('income3') }}</div>
-                        @enderror
+                            <label for="cobudget2">თანამონაწილე ორგანიზაცია 2-ის ბიუჯეტი (ფონდიდან მოთხოვნილი)</label>
+                            <input type="number" class="form-control @error('cobudget2') is-invalid @enderror"
+                                   name="cobudget2" id="cobudget2"
+                                   value="{{ old('cobudget2') }}">
+                            @error('cobudget2')
+                            <div class="invalid-feedback">{{ $errors->first('cobudget2') }}</div>
+                            @enderror
+                        </div>
+                        <div style="width: 50%">
+                            <label for="currPeriod">მიმდინარე პერიოდი </label>
+                            <select class="form-control" id="currPeriod" name="currPeriod">
+                                <option value="I" @if (old('currPeriod') == 'I') selected @endif> I</option>
+                                <option value="II" @if (old('currPeriod') == 'II') selected @endif>II</option>
+                                <option value="III" @if (old('currPeriod') == 'III') selected @endif>III</option>
+                                <option value="IV" @if (old('currPeriod') == 'IV') selected @endif> IV</option>
+                                <option value="V" @if (old('currPeriod') == 'V') selected @endif> V</option>
+                                <option value="VI" @if (old('currPeriod') == 'VI') selected @endif> VI</option>
+                                <option value="VII" @if (old('currPeriod') == 'VII') selected @endif> VII</option>
+                                <option value="VIII" @if (old('currPeriod') == 'VIII') selected @endif> VIII</option>
+                                <option value="IX" @if (old('currPeriod') == 'IX') selected @endif> IX</option>
+                                <option value="X" @if (old('currPeriod') == 'X') selected @endif> X</option>
+                                <option value="XI" @if (old('currPeriod') == 'XI') selected @endif> XI</option>
+                                <option value="XII" @if (old('currPeriod') == 'XII') selected @endif> XII</option>
+                            </select>
 
-                        <label for="outcome1"><span style="color: #ffa949">(გასული)</span> წერილი ანგარიშის ხარვეზთან დაკავშირებით </label>
-                        <input type="text" class="form-control @error('outcome1') is-invalid @enderror"
-                               name="outcome1" id="outcome1"
-                               value="{{ old('outcome1') }}">
-                        @error('outcome1')
-                        <div class="invalid-feedback">{{ $errors->first('outcome1') }}</div>
-                        @enderror
+                            <label for="income1"><span style="color: #2fa360">(შემოსული)</span> ანგარიშის (Eflow-ს ნომერი) </label>
+                            <input type="text" class="form-control @error('income1') is-invalid @enderror"
+                                   name="income1" id="income1"
+                                   value="{{ old('income1') }}">
+                            @error('income1')
+                            <div class="invalid-feedback">{{ $errors->first('income1') }}</div>
+                            @enderror
 
-                        <label for="outcome2"><span style="color: #ffa949">(გასული)</span> წერილი ცვლილების კორესპონდეციასთნ დაკავშირებით </label>
-                        <input type="text" class="form-control @error('outcome2') is-invalid @enderror"
-                               name="outcome2" id="outcome2"
-                               value="{{ old('outcome2') }}">
-                        @error('outcome2')
-                        <div class="invalid-feedback">{{ $errors->first('outcome2') }}</div>
-                        @enderror
+                            <label for="income2"><span style="color: #2fa360">(შემოსული)</span> ცვლილების კორესპოდენცია (Eflow-ს ნომერი) </label>
+                            <input type="text" class="form-control @error('income2') is-invalid @enderror"
+                                   name="income2" id="income2"
+                                   value="{{ old('income2') }}">
+                            @error('income2')
+                            <div class="invalid-feedback">{{ $errors->first('income2') }}</div>
+                            @enderror
 
-                        <label for="outcome3"><span style="color: #ffa949">(გასული)</span> ხარვეზის ვადაზე პასუხი  </label>
-                        <input type="text" class="form-control @error('outcome3') is-invalid @enderror"
-                               name="outcome3" id="outcome3"
-                               value="{{ old('outcome3') }}">
-                        @error('outcome3')
-                        <div class="invalid-feedback">{{ $errors->first('outcome3') }}</div>
-                        @enderror
+                            <label for="income3"><span style="color: #2fa360">(შემოსული)</span> ხარვეზის გამოსწორების ვადის მოთხოვნა (Eflow-ს ნომერი)  </label>
+                            <input type="text" class="form-control @error('income3') is-invalid @enderror"
+                                   name="income3" id="income3"
+                                   value="{{ old('income3') }}">
+                            @error('income3')
+                            <div class="invalid-feedback">{{ $errors->first('income3') }}</div>
+                            @enderror
 
-                        <label for="jobChangeEflow">სამსახურებრივი ცვლილებასთან დაკავშირებით (Eflow-ს ნომერი) </label>
-                        <input type="text" class="form-control @error('jobChangeEflow') is-invalid @enderror"
-                               name="jobChangeEflow" id="jobChangeEflow"
-                               aria-describedby="jobChangeEflowHelp"
-                               value="{{ old('jobChangeEflow') }}">
-                        @error('jobChangeEflow')
-                        <div class="invalid-feedback">{{ $errors->first('jobChangeEflow') }}</div>
-                        @enderror
+                            <label for="outcome1"><span style="color: #ffa949">(გასული)</span> წერილი ანგარიშის ხარვეზთან დაკავშირებით (Eflow-ს ნომერი) </label>
+                            <input type="text" class="form-control @error('outcome1') is-invalid @enderror"
+                                   name="outcome1" id="outcome1"
+                                   value="{{ old('outcome1') }}">
+                            @error('outcome1')
+                            <div class="invalid-feedback">{{ $errors->first('outcome1') }}</div>
+                            @enderror
 
-                        <label for="jobChangeOrderNumber">სამსახურებრივი ცვლილებასთან დაკავშირებით (ბრძანების ნომერი) </label>
-                        <input type="text" class="form-control @error('jobChangeOrderNumber') is-invalid @enderror"
-                               name="jobChangeOrderNumber" id="jobChangeOrderNumber"
-                               value="{{ old('jobChangeOrderNumber') }}">
-                        @error('jobChangeOrderNumber')
-                        <div class="invalid-feedback">{{ $errors->first('jobChangeOrderNumber') }}</div>
-                        @enderror
+                            <label for="outcome2"><span style="color: #ffa949">(გასული)</span> წერილი ცვლილების კორესპოდენციასთან დაკავშირებით (Eflow-ს ნომერი) </label>
+                            <input type="text" class="form-control @error('outcome2') is-invalid @enderror"
+                                   name="outcome2" id="outcome2"
+                                   value="{{ old('outcome2') }}">
+                            @error('outcome2')
+                            <div class="invalid-feedback">{{ $errors->first('outcome2') }}</div>
+                            @enderror
 
-                        <label for="jobTerminationEflow">სამსახურებრივი შეწყვეტასთან დაკავშირებით (Eflow-ს ნომერი) </label>
-                        <input type="text" class="form-control @error('jobTerminationEflow') is-invalid @enderror"
-                               name="jobTerminationEflow" id="jobTerminationEflow"
-                               value="{{ old('jobTerminationEflow') }}">
-                        @error('jobTerminationEflow')
-                        <div class="invalid-feedback">{{ $errors->first('jobTerminationEflow') }}</div>
-                        @enderror
+                            <label for="outcome3"><span style="color: #ffa949">(გასული)</span> ხარვეზის ვადაზე პასუხი (Eflow-ს ნომერი)  </label>
+                            <input type="text" class="form-control @error('outcome3') is-invalid @enderror"
+                                   name="outcome3" id="outcome3"
+                                   value="{{ old('outcome3') }}">
+                            @error('outcome3')
+                            <div class="invalid-feedback">{{ $errors->first('outcome3') }}</div>
+                            @enderror
 
-                        <label for="jobTerminationOrderNumber">სამსახურებრივი შეწყვეტასთან დაკავშირებით (ბრძანების ნომერი)</label>
-                        <input type="text" class="form-control @error('jobTerminationOrderNumber') is-invalid @enderror"
-                               name="jobTerminationOrderNumber" id="jobTerminationOrderNumber"
-                               value="{{ old('jobTerminationOrderNumber') }}">
-                        @error('jobTerminationOrderNumber')
-                        <div class="invalid-feedback">{{ $errors->first('jobTerminationOrderNumber') }}</div>
-                        @enderror
-                    </div>
+                            <label for="jobChangeEflow">სამსახურებრივი ბარათი ცვლილებასთან და პროექტის შეწყვეტასთან დაკავშირებით (Eflow-ს ნომერი) </label>
+                            <input type="text" class="form-control @error('jobChangeEflow') is-invalid @enderror"
+                                   name="jobChangeEflow" id="jobChangeEflow"
+                                   aria-describedby="jobChangeEflowHelp"
+                                   value="{{ old('jobChangeEflow') }}">
+                            @error('jobChangeEflow')
+                            <div class="invalid-feedback">{{ $errors->first('jobChangeEflow') }}</div>
+                            @enderror
 
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">დახურვა</button>
-                <button type="submit" class="btn btn-success" form="addform">დამატება</button>
+                            <label for="jobTerminationEflow">ბრძანება პროექტის შეწყვეტის თაობაზე </label>
+                            <input type="text" class="form-control @error('jobTerminationEflow') is-invalid @enderror"
+                                   name="jobTerminationEflow" id="jobTerminationEflow"
+                                   value="{{ old('jobTerminationEflow') }}">
+                            @error('jobTerminationEflow')
+                            <div class="invalid-feedback">{{ $errors->first('jobTerminationEflow') }}</div>
+                            @enderror
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">დახურვა</button>
+                    <button type="submit" class="btn btn-success" form="addform">დამატება</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 <script type="text/javascript">
